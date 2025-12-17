@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bow05lyacrc8b"]
+
+[ext_resource type="Script" uid="uid://bmahbyim2se7c" path="res://assets/script/TrapDamage.gd" id="1_s2pii"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s2pii"]
+size = Vector2(34, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6okj2"]
+size = Vector2(36, 20)
+
+[node name="Trap" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_s2pii")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_s2pii")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_6okj2")

@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://0qi1dv57y7dl"]
+
+[ext_resource type="Script" uid="uid://c2f8bx8l42cnq" path="res://assets/script/main_menu.gd" id="1_43s8q"]
+[ext_resource type="Texture2D" uid="uid://d1xeh6mgqbd4w" path="res://assets/background/main.jpg" id="2_5rel7"]
+[ext_resource type="AudioStream" uid="uid://56l7spndpnoe" path="res://assets/sound/level/menu.mp3" id="4_b4yld"]
+[ext_resource type="FontFile" uid="uid://clh4x5b72yqym" path="res://assets/fonts/pixelgamefont/PixelGameFont.ttf" id="5_43s8q"]
+[ext_resource type="PackedScene" uid="uid://cc54i810myowe" path="res://scences/model.tscn" id="5_shbnm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b4yld"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4yld"]
+size = Vector2(1169, 20)
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_43s8q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(577, 327.5)
+scale = Vector2(0.96999997, 1.0046012)
+texture = ExtResource("2_5rel7")
+
+[node name="btnPlay" type="Button" parent="."]
+offset_left = 835.0
+offset_top = 332.0
+offset_right = 1097.0
+offset_bottom = 423.0
+scale = Vector2(1, 0.90309465)
+theme_override_font_sizes/font_size = 60
+text = "Play"
+
+[node name="btnQuit" type="Button" parent="."]
+offset_left = 835.0
+offset_top = 487.0
+offset_right = 1098.0
+offset_bottom = 578.0
+theme_override_font_sizes/font_size = 60
+text = "Quit"
+
+[node name="lbName" type="Label" parent="."]
+material = SubResource("ShaderMaterial_b4yld")
+offset_left = 80.0
+offset_top = 144.0
+offset_right = 1239.0
+offset_bottom = 241.0
+scale = Vector2(0.88775307, 0.9287451)
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.93333334, 1, 0.99215686, 1)
+theme_override_fonts/font = ExtResource("5_43s8q")
+theme_override_font_sizes/font_size = 90
+text = "WELCOME BACK PLAYER!"
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_b4yld")
+volume_db = -14.0
+autoplay = true
+
+[node name="Player" parent="." instance=ExtResource("5_shbnm")]
+position = Vector2(58, 577)
+scale = Vector2(6, 6)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(575, 665)
+shape = SubResource("RectangleShape2D_b4yld")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-15, 456)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_b4yld")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1165, 365)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_b4yld")
+
+[connection signal="pressed" from="btnPlay" to="." method="_on_btn_play_pressed"]
+[connection signal="pressed" from="btnQuit" to="." method="_on_btn_quit_pressed"]

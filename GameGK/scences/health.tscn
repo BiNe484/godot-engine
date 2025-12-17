@@ -1,0 +1,68 @@
+[gd_scene load_steps=11 format=3 uid="uid://cq8naceorrmgx"]
+
+[ext_resource type="Script" uid="uid://04yj4ygnnrgi" path="res://assets/script/health.gd" id="1_csb1w"]
+[ext_resource type="Texture2D" uid="uid://cj0on363em8tg" path="res://assets/items/Heart Pickup.png" id="1_g64rk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csb1w"]
+atlas = ExtResource("1_g64rk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g87gi"]
+atlas = ExtResource("1_g64rk")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fniy"]
+atlas = ExtResource("1_g64rk")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atjw5"]
+atlas = ExtResource("1_g64rk")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axw2x"]
+atlas = ExtResource("1_g64rk")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auyqv"]
+atlas = ExtResource("1_g64rk")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5bcoj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csb1w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g87gi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fniy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atjw5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axw2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auyqv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rldyj"]
+radius = 7.0
+height = 14.0
+
+[node name="Health" type="CharacterBody2D"]
+script = ExtResource("1_csb1w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5bcoj")
+frame_progress = 0.45294768
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_rldyj")
